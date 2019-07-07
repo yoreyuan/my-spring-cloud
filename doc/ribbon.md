@@ -145,29 +145,3 @@ ILoadBalancer | 定义负载均衡选择服务的核心方法接口 | ZoneAwareL
 ServerListUpdater | 为DynamicServerListLoadBalancer定义动态更新服务列表的接口 | PollingServerListUpdater
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

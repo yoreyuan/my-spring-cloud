@@ -268,7 +268,7 @@ feign:
 ```
 
 ## Feign的文件上传
-关于项目详细说明，可查看[feign-upload](../../example/feign-upload/readme.md)
+关于项目详细说明，可查看[feign-upload](../example/feign-upload/readme.md)
 
 
 
