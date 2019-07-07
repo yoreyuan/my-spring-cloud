@@ -4,8 +4,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<modules>
+		<module>demo/config/config-server</module>
+		<module>demo/gateway/zuul-server</module>
+		<module>demo/security/eureka-server</module>
+		<module>demo/security/eureka-client</module>
 		<module>demo/eureka/eureka-server</module>
 		<module>demo/eureka/eureka-client</module>
+		<module>demo/feign/feign-hello</module>
+		<module>demo/eureka/eureka-server-comm</module>
+		<module>demo/feign/multiparameter/feign-provider</module>
+		<module>demo/feign/multiparameter/feign-consumer</module>
+		<module>example/feign-upload/feign-file-server</module>
+		<module>example/feign-upload/feign-upload-client</module>
 	</modules>
 
 	<parent>
@@ -29,6 +39,7 @@
 		<spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
 	</properties>
 
+	<!-- 管理依赖 -->
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -41,6 +52,7 @@
 		</dependencies>
 	</dependencyManagement>
 
+	<!--注意： 这里必须要添加， 否者各种依赖有问题 -->
 	<repositories>
 		<repository>
 			<id>spring-snapshots</id>
@@ -57,6 +69,11 @@
 			<snapshots>
 				<enabled>true</enabled>
 			</snapshots>
+		</repository>
+		<repository>
+			<id>jcenter-snapshots</id>
+			<name>jcenter</name>
+			<url>https://jcenter.bintray.com/</url>
 		</repository>
 	</repositories>
 
@@ -82,14 +99,38 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+					<groupId>org.springframework.boot</groupId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<!--不用Tomcat,使用undertow -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-undertow</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.undertow</groupId>
+			<artifactId>undertow-servlet</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>

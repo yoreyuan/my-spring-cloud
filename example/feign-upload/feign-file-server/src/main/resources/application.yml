@@ -1,0 +1,15 @@
+server:
+  port: 8012
+spring:
+  application:
+    name: feign-file-server
+
+eureka:
+  server:
+    enableSelfPreservation: false
+  client:
+    serviceUrl:
+      defaultZone: http://cdh6:8761/eureka/
+  instance:
+    prefer-ip-address: true
+

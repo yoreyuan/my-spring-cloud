@@ -1,11 +1,15 @@
-server:
-  port: 8081
-
-spring:
-  application:
-    name: demo-client1
+#server:
+#  port: 8081
+#
+#spring:
+#  application:
+#    name: demo-client1
+#
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:8761/eureka/
 
 eureka:
   client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+    eureka-service-url-poll-interval-seconds: 10 #默认为300秒，这里为了验证改为10秒

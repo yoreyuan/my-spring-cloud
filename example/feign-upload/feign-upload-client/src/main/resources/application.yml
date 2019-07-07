@@ -1,0 +1,19 @@
+
+server:
+  port: 8011
+spring:
+  application:
+    name: feign-upload-client
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://cdh6:8761/eureka
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000

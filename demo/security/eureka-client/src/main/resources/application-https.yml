@@ -1,0 +1,20 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: client1
+
+eureka:
+  client:
+    securePortEnabled: true
+    security:
+      basic:
+        user: admin
+        password: admin
+    ssl:
+      key-store: client.p12
+      key-store-password: client
+    serviceUrl:
+      defaultZone: https://${eureka.client.security.basic.user}:${eureka.client.security.basic.password}@localhost:8761/eureka/
+

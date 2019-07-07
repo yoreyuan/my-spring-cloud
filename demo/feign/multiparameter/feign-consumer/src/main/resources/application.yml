@@ -1,0 +1,10 @@
+server:
+  port: 8011
+spring:
+  application:
+    name: feign-consumer
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://cdh6:8761/eureka

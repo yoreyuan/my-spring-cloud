@@ -1,0 +1,15 @@
+server:
+  port: 8763
+
+eureka:
+  instance:
+    hostname: localhost
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://cdh6:8761/eureka/,http://cdh6:8762/eureka/ # three eureka server
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
+    enableSelfPreservation: false

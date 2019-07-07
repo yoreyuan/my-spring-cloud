@@ -1,19 +1,32 @@
-server:
-  port: 8761
-
-spring:
-  application:
-    name: eureka-server
+#server:
+#  port: 8761
+#
+#spring:
+#  application:
+#    name: eureka-server
+#
+#eureka:
+#  instance:
+#    hostname: localhost
+#  client:
+#    registerWithEureka: false
+#    fetchRegistry: false
+#    serviceUrl:
+#      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+#  server:
+#    waitTimeInMsWhenSyncEmpty: 0
+#    enableSelfPreservation: false
 
 eureka:
-  instance:
-    hostname: localhost
-  client:
-    registerWithEureka: false
-    fetchRegistry: false
-    serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
   server:
-    waitTimeInMsWhenSyncEmpty: 0
-    enableSelfPreservation: false
+    peer-eureka-nodes-update-interval-ms: 10000       #默认是10分钟即600000，这里为了验证改为10秒
+    use-read-only-response-cache: false               #测试时可以关闭缓存
+    response-cache-auto-expiration-in-seconds: 10     # 过期时间调整为10秒
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
 

@@ -1,0 +1,20 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: eureka-server
+eureka:
+  instance:
+    hostname: localhost
+    preferIpAddress: true   # 是否优先使用ip地址来替代hostname作为实例的hostName字段值
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://cdh6:8762/eureka/,http://cdh6:8763/eureka/ # three eureka server
+#      defaultZone: http://localhost:8762/eureka/ # two eureka server
+  #      defaultZone: http://localhost:8761/eureka/ # one eureka server
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
+    enableSelfPreservation: false
