@@ -1,0 +1,11 @@
+server:
+  port: 7070
+spring:
+  application:
+    name: client-a
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.host:cdh6}:${eureka.port:8761}/eureka/
+  instance:
+    prefer-ip-address: true

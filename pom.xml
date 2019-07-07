@@ -16,6 +16,8 @@
 		<module>demo/feign/multiparameter/feign-consumer</module>
 		<module>example/feign-upload/feign-file-server</module>
 		<module>example/feign-upload/feign-upload-client</module>
+		<module>demo/ribbon/client-a</module>
+		<module>demo/ribbon/ribbon-loadbalancer</module>
 	</modules>
 
 	<parent>
