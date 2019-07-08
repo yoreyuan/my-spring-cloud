@@ -1,10 +1,7 @@
 package yore.controller;
 
+import org.springframework.web.bind.annotation.*;
 import yore.entity.User;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -26,6 +23,15 @@ public class UserController {
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String updateUser( @RequestBody User user){
         return "hello,"+user.getName();
+    }
+
+    @RequestMapping(value = "/getUser",method = RequestMethod.GET)
+    public String getUser(@RequestParam("username") String username) throws Exception{
+        if(username.equals("spring")) {
+            return "This is real user";
+        }else {
+            throw new Exception();
+        }
     }
 
 }
