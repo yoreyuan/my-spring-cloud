@@ -3,11 +3,13 @@ server:
 eureka:
   instance:
     hostname: localhost
+    prefer-ip-address: true
   server :
     enable-self-preservation: false
+    peer-eureka-nodes-update-interval-ms: 5000
+    eviction-interval-timer-in-ms: 60000
   client:
-    registerWithEureka: false
+    registerWithEureka: true
     fetchRegistry: false
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-
