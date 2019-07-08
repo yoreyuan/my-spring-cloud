@@ -1,0 +1,32 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: hystrix-dashboard
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.host:cdh6}:${eureka.port:8761}/eureka/
+  instance:
+    prefer-ip-address: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1000
+    getProductInfoList:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000
+management:
+#  security:
+#    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
