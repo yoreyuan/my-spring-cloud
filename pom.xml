@@ -23,6 +23,7 @@
 		<module>demo/Hystrix/hello-server</module>
 		<module>demo/Hystrix/hystrix-dashboard</module>
 		<module>demo/Hystrix/turbine-dashboard</module>
+		<module>demo/zuul/zuul-server1</module>
 	</modules>
 
 	<parent>
@@ -82,14 +83,14 @@
 			<name>jcenter</name>
 			<url>https://jcenter.bintray.com/</url>
 		</repository>
-		<repository>
+<!--		<repository>
 			<id>spring-milestones</id>
 			<name>Spring Milestones</name>
 			<url>https://repo.spring.io/libs-milestone</url>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
-		</repository>
+		</repository>-->
 	</repositories>
 
 	<pluginRepositories>
@@ -144,11 +145,6 @@
 		<dependency>
 			<groupId>io.undertow</groupId>
 			<artifactId>undertow-servlet</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 
 	</dependencies>
