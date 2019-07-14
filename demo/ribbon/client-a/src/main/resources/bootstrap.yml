@@ -1,6 +1,20 @@
+#server:
+#  port: 7070
+#spring:
+#  application:
+#    name: client-a
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://${eureka.host:cdh6}:${eureka.port:8761}/eureka/
+#  instance:
+#    prefer-ip-address: true
+
+
 server:
   port: 7070
 spring:
+  profiles: node1
   application:
     name: client-a
 eureka:
@@ -9,3 +23,40 @@ eureka:
       defaultZone: http://${eureka.host:cdh6}:${eureka.port:8761}/eureka/
   instance:
     prefer-ip-address: true
+    metadata-map:
+      host-mark: running-host
+
+---
+
+server:
+  port: 7071
+spring:
+  profiles: node2
+  application:
+    name: client-a
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.host:cdh6}:${eureka.port:8761}/eureka/
+  instance:
+    prefer-ip-address: true
+    metadata-map:
+      host-mark: running-host
+
+---
+
+server:
+  port: 7072
+spring:
+  profiles: node3
+  application:
+    name: client-a
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.host:cdh6}:${eureka.port:8761}/eureka/
+  instance:
+    prefer-ip-address: true
+    metadata-map:
+      host-mark: gray-host
+
