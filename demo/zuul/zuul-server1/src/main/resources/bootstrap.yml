@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: zuul-server1
+  redis:
+    database: 11
+    host: cdh5
+    port: 6379
+    password: 123456
+#    cluster:
+#      nodes:
+#      - cdh5:6379
+#      - 127.0.0.1:6380
+#      - 127.0.0.1:6381
+#      - 127.0.0.1:6382
+    #    jedis:
+    lettuce:
+      pool:
+        max-idle: 8 #连接池中的最大空闲连接 默认8
+        min-idle: 0 #连接池中的最小空闲连接 默认0
+        max-active: 8 #连接池最大连接数 默认8 ，负数表示没有限制
+        max-wait: -1 #连接池最大阻塞等待时间（使用负值表示没有限制） 默认-1
+  servlet:                  #spring boot2.0之前是http
+    multipart:
+      enabled: true             # 使用http multipart上传处理
+      max-file-size: 100MB      # 设置单个文件的最大长度，默认1M，如不限制配置为-1
+      max-request-size: 100MB   # 设置最大的请求文件的大小，默认10M，如不限制配置为-1
+      file-size-threshold: 1MB  # 当上传文件达到1MB的时候进行磁盘写入
+      location: /tmp            # 上传的临时目录
+
+server:
+  port: 5555
+  undertow:
+    worker-threads: 4000
+    io-threads: 200
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.host:cdh6}:${eureka.port:8761}/eureka/
+  instance:
+    prefer-ip-address: true

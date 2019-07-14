@@ -24,6 +24,8 @@
 		<module>demo/Hystrix/hystrix-dashboard</module>
 		<module>demo/Hystrix/turbine-dashboard</module>
 		<module>demo/zuul/zuul-server1</module>
+		<module>demo/zuul/auth-server</module>
+		<module>demo/zuul/zuul-server3</module>
 	</modules>
 
 	<parent>
