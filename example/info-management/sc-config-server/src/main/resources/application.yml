@@ -1,0 +1,14 @@
+server:
+  port: 9090
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/yoreyuan/my-spring-cloud.git
+          #username:
+          #password:
+          search-paths: spring-cloud-config
+  application:
+    name: sc-configserver
+
