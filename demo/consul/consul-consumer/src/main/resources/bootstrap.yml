@@ -1,0 +1,35 @@
+#server:
+#  port: 8082  # 因为本地启动，防止端口冲突
+#spring:
+#  application:
+#    name: consul-consumer
+#  cloud:
+#    consul:
+#      host: 192.168.100.162
+#      port: 8500
+#      discovery:
+#        service-name: consumer-service
+#ribbon:
+#  eureka:
+#    enabled: false
+
+
+server:
+  port: 8082
+
+spring:
+  application:
+    name: consul-consumer
+  cloud:
+    consul:
+      discovery:
+        instance-id: ${spring.application.name}:${server.port}
+        prefer-ip-address: true
+        health-check-interval: 10s
+        hostname: ${spring.application.name}
+        service-name: ${spring.application.name}
+        enabled: true
+        health-check-path: /actuator/health
+      host: cdh6
+      port: 8500
+

@@ -1,0 +1,31 @@
+#server:
+#  port: 8081  # 因为本地启动，防止端口冲突
+#spring:
+#  application:
+#    name: consul-provider
+#  cloud:
+#    consul:
+#      host: 192.168.100.162
+#      port: 8500
+#      discovery:
+#        service-name: provider-service
+#        enabled: true
+server:
+  port: 8081
+spring:
+  application:
+    name: consul-provider
+  cloud:
+    consul:
+      discovery:
+        instance-id: ${spring.application.name}:${server.port}
+#        prefer-ip-address: true
+        health-check-interval: 10s
+#        hostname: ${spring.application.name}
+#        service-name: ${spring.application.name}
+        enabled: true
+#        health-check-path: /actuator/health
+        #这里需要注意的是ip一定要服务器间能调通
+        health-check-url: http://${spring.cloud.client.ip-address}:${server.port}/actuator/health
+      host: cdh6
+      port: 8500
