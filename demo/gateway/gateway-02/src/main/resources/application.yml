@@ -1,0 +1,68 @@
+server:
+  port: 8081
+
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#      - id: after_route
+#        uri: http://baidu.com
+#        predicates:
+#        - After=2019-09-17T19:11:59.683+08:00[Asia/Shanghai]
+
+#        - Before=2019-09-17T19:11:59.683+08:00[Asia/Shanghai]
+
+#        - name: Between
+#          args:
+#            datetime1: 2019-09-16T19:11:59.683+08:00[Asia/Shanghai]
+#            datetime2: 2019-09-17T20:11:59.683+08:00[Asia/Shanghai]
+
+#        - Cookie=chocolate,ch.p
+
+#        - Header=X-Request-Id, mercury
+
+
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#      - id: baidu_route
+#        uri: http://www.baidu.com
+#        predicates:
+#        - Path=/baidu/test/**
+#        filters:
+#        - StripPrefix=2
+
+
+# 5.7
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: hystrix_route
+        uri: http://localhost:8081/test/Hystrix?isSleep=true
+        predicates:
+        - Path=/test/Hystrix
+        filters:
+        - name: Hystrix # Hystrix Filter的名称
+          args: # Hystrix配置参数
+            name: fallbackcmd #HystrixCommand的名字
+            fallbackUri: forward:/fallback #fallback对应的uri
+#Hystrix的fallbackcmd的时间
+hystrix.command.fallbackcmd.execution.isolation.thread.timeoutInMilliseconds: 5000
+
+
+logging:
+  level:
+    org.springframework.cloud.gateway: TRACE
+    org.springframework.http.server.reactive: DEBUG
+    org.springframework.web.reactive: DEBUG
+    reactor.ipc.netty: DEBUG
+
+
+#开启actuator管理api，后面要关闭
+management:
+  endpoints:
+    web:  # http://localhost:8080/actuator/gateway/routes
+      exposure:
+        include: "*"
